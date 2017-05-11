@@ -31,7 +31,7 @@ namespace Navigation.ViewModels
         private void Navigate()
         {
             _ea.GetEvent<MyEvent>().Publish("hello");
-            _navigationService.GoBack();
+            _navigationService.GoBackAsync();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -41,8 +41,13 @@ namespace Navigation.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("id"))
-                Title = (string)parameters["id"];
+            
         }
-    }
+
+		public void OnNavigatingTo(NavigationParameters parameters)
+		{
+			if (parameters.ContainsKey("id"))
+                Title = (string)parameters["id"];
+		}
+	}
 }

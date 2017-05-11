@@ -14,11 +14,12 @@ namespace Navigation
         protected override void OnInitialized()
         {
 
-            NavigationService.Navigate("MainPage");
+            NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes()
         {
+			Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<ViewA>();
             Container.RegisterTypeForNavigation<ViewB>();
