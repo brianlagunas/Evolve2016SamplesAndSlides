@@ -7,9 +7,9 @@ namespace Navigation.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {
-        INavigationService _navigationService;
+		readonly INavigationService _navigationService;
 
-        private string _title = "View A";
+		private string _title = "View A";
         public string Title
         {
             get { return _title; }
@@ -36,7 +36,7 @@ namespace Navigation.ViewModels
             var p = new NavigationParameters();
             p.Add("id", Value);
 
-            _navigationService.Navigate("ViewB", p);
+            _navigationService.NavigateAsync("ViewB", p);
         }
     }
 }

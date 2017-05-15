@@ -35,7 +35,7 @@ namespace Navigation.ViewModels
         public MainPageViewModel(INavigationService navigationService, IEventAggregator ea)
         {
             _navigationService = navigationService;
-            NavigateCommand = new DelegateCommand(Navigate).ObservesCanExecute((p) => IsActive);
+            NavigateCommand = new DelegateCommand(Navigate).ObservesCanExecute(() => IsActive);
 
             ea.GetEvent<MyEvent>().Subscribe(Handled);
         }
@@ -47,7 +47,7 @@ namespace Navigation.ViewModels
 
         private void Navigate()
         {
-            _navigationService.Navigate("ViewA");
+            _navigationService.NavigateAsync("ViewA");
         }
     }
 }
